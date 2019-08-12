@@ -46,8 +46,13 @@ class GetUserInfoDialog extends ComponentDialog {
         return await step.endDialog();
     }
     
+    // If you remove this validation logic, it will cause an error cause this is mandatory for ActivityPrompt
     async inputValidator(promptContext){
-        const userInputObject = promptContext.recognized.value;
+        const userInputObject = promptContext.recognized.value.value;
+
+        // You can add some validation logic for email address and phone number
+        // userInputObject.myEmail, userInputObject.myTel
+
         return true;
     }
 }
